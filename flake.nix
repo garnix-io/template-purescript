@@ -46,6 +46,9 @@
         modules = [
           inputs.garnix-lib.nixosModules.garnix
 
+          {
+            _module.args = { self = inputs.self; };
+          }
           # This is where the work happens
           ./hosts/server.nix
         ];

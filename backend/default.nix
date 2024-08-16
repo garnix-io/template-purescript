@@ -9,17 +9,18 @@ in pkgs.stdenv.mkDerivation {
     spagoPkgs.buildSpagoStyle
   ];
   nativeBuildInputs = [
-    pkgs.purs
-    pkgs.spago
     pkgs.esbuild
+    pkgs.purs
   ];
   src = ./.;
+  # Install spago dependencies from spago-packages.nix
   unpackPhase = ''
     cp $src/spago.dhall .
     cp $src/packages.dhall .
     cp -r $src/src .
     install-spago-style
   '';
+  # Build and bundle the backend.
   buildPhase = ''
     build-spago-style "./src/**/*.purs"
     echo 'import {main} from "./output/Main/index.js"; main();' | esbuild --platform=node --format=iife --bundle  --outfile="backend.js"

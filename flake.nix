@@ -35,7 +35,6 @@
               purs
               spago
               purs-tidy
-              purs-backend-es
               purescript-language-server
             ];
           };

@@ -1,0 +1,13 @@
+.direnv
+backend/.spago2nix
+result
+backend/bower_components/
+backend/node_modules/
+backend/.pulp-cache/
+backend/output/
+backend/generated-docs/
+backend/.psc-package/
+backend/.psc*
+backend/.purs*
+backend/.psa*
+backend/.spago

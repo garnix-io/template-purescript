@@ -1,9 +1,8 @@
 module Main where
 
 import Data.Show (show)
-import Effect.Class.Console as Console
 import HTTPurple (class Generic, RouteDuplex', ServerM, mkRoute, ok, segment, serve, (/))
-import Prelude (($), (<>), discard)
+import Prelude (($), (<>))
 
 data Route = Hello String
 
@@ -18,6 +17,5 @@ main :: ServerM
 main =
   serve { port: 8080 } { route, router }
   where
-  router { route: Hello name, headers } = do
-    Console.log $ show headers
-    ok $ "hello " <> name
+  router { route: Hello name, headers } =
+    ok $ "hello " <> name <> "\n" <> show headers
